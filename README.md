@@ -37,3 +37,11 @@ git checkout -b "название ветки"
 ```shell
 git branch
 ```
+## переключиться между ветками 
+```shell
+git checkout namebranch
+```
+## притянуть изменения из удалённого репозитория 
+```shell
+git pull origin namebranch
+```
