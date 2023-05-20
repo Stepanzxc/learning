@@ -24,3 +24,16 @@ git commit -m <name commit>
 ```shell
 git branch -M main
 ```
+
+## push в ветку  
+```shell
+git push origin main
+```
+## создать ветку  
+```shell
+git checkout -b "название ветки"
+```
+## просмотр веток 
+```shell
+git branch
+```
