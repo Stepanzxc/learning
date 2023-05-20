@@ -12,7 +12,7 @@ git status
 
 ## Добавить файлы в git 
 ```shell
-git add <filename>
+git add example.go
 ```
 
 ## Создать коммит 
@@ -27,7 +27,7 @@ git branch -M main
 
 ## push в ветку  
 ```shell
-git push origin main
+git push origin namebranch
 ```
 ## создать ветку  
 ```shell
