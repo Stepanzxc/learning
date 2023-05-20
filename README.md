@@ -12,7 +12,7 @@ git status
 
 ## Добавить файлы в git 
 ```shell
-git add <filename>
+git add example.go
 ```
 
 ## Создать коммит 
@@ -23,4 +23,17 @@ git commit -m <name commit>
 ## Создание main ветки 
 ```shell
 git branch -M main
+```
+
+## push в ветку  
+```shell
+git push origin namebranch
+```
+## создать ветку  
+```shell
+git checkout -b "название ветки"
+```
+## просмотр веток 
+```shell
+git branch
 ```
