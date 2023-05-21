@@ -1,7 +1,9 @@
 package main
 
-import "log"
+import "fmt"
 
 func main() {
-	log.Println("hello from lesson 2")
+	var str string = "Bld bdld"
+	fmt.Println(str)
+	fmt.Printf("Type: %T Value: %v\n", str, str)
 }
