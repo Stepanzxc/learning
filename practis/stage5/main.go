@@ -1,19 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"log"
-	"strconv"
 )
 
 func MultiTable(number int) string {
+	return ""
 	var a string
 	b := ""
 	for i := 10; i >= 1; i-- {
+		z := i * number
 		if i <= 9 {
-			a = strconv.Itoa(i) + " * " + strconv.Itoa(number) + " = " + strconv.Itoa(number*i) + "\n"
+			a = fmt.Sprintf("%d * %d = %d", i, number, z) + "\n"
 			b = a + b
 		} else {
-			a = strconv.Itoa(i) + " * " + strconv.Itoa(number) + " = " + strconv.Itoa(number*i)
+			a = fmt.Sprintf("%d * %d = %d", i, number, z)
 			b = a + b
 		}
 	}
