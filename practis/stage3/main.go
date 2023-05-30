@@ -1,11 +1,17 @@
 package main
 
+import "log"
+
 func RepeatStr(repetitions int, value string) string {
-	//TODO:: Твой код
-	return ""
+	str := ""
+	for i := 0; i < repetitions; i++ {
+		str += value
+	}
+
+	return str
 }
 
 func main() {
-	//log.Println(RepeatStr(4, "a") == "aaaa")
-	//log.Println(RepeatStr(2, "test ") == "test test ")
+	log.Println(RepeatStr(4, "a") == "aaaa")
+	log.Println(RepeatStr(2, "test ") == "test test ")
 }
