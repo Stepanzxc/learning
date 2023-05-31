@@ -6,7 +6,6 @@ import (
 )
 
 func MultiTable(number int) string {
-	return ""
 	var a string
 	b := ""
 	for i := 10; i >= 1; i-- {
