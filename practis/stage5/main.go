@@ -19,6 +19,7 @@ func MultiTable(number int) string {
 		}
 	}
 	return b
+
 }
 
 func main() {
