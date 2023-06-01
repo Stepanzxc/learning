@@ -3,8 +3,12 @@ package main
 import "log"
 
 func Between(a, b int) []int {
-	// your code here
-	return nil
+	c := []int{a}
+	for i := a; i < b; i++ {
+		c = append(c, (a + 1))
+		a++
+	}
+	return c
 }
 
 func main() {
