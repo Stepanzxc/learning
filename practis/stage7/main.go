@@ -3,10 +3,14 @@ package main
 import "log"
 
 func StringToArray(str string) []string {
-	// your code here
-	return nil
+	b := []string{str}
+	for i := 0; i <= len(str); i++ {
+		if b[i] == " " {
+			log.Println("adsasds")
+		}
+	}
+	return b
 }
-
 func main() {
 	log.Println(StringToArray("Robin Singh"))                        //[]string{"Robin", "Singh"}
 	log.Println(StringToArray("StarWars"))                           //[]string{"StarWars"}
