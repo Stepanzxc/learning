@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 )
 
@@ -9,7 +8,6 @@ func Solution(a, b string) string {
 	c := ""
 	if len(a) < len(b) {
 		c = a + b + a
-		fmt.Println(c)
 	} else {
 		c = b + a + b
 	}
