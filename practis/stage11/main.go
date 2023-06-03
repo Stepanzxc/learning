@@ -5,21 +5,6 @@ import (
 	"strconv"
 )
 
-// func SumMix(arr []any) int {
-// 	a := []any{}
-// 	var b int
-// 	for i := 0; i < len(arr); i++ {
-// 		v:=a[i]
-// 		if reflect.TypeOf(v)==string{
-
-// 		}else{
-
-// 		}
-
-// 	}
-// 	return 0
-// }
-
 func SumMix(arr []any) int {
 
 	var result []int
