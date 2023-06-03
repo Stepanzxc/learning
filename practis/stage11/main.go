@@ -5,6 +5,7 @@ import (
 	"strconv"
 )
 
+// SumMix my favorite functions
 func SumMix(arr []any) int {
 
 	var result []int
