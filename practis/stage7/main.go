@@ -1,12 +1,15 @@
 package main
 
-import "log"
+import (
+	"log"
+	"strings"
+)
 
 func StringToArray(str string) []string {
-	// your code here
-	return nil
-}
+	v := strings.Split(str, " ")
+	return v
 
+}
 func main() {
 	log.Println(StringToArray("Robin Singh"))                        //[]string{"Robin", "Singh"}
 	log.Println(StringToArray("StarWars"))                           //[]string{"StarWars"}
