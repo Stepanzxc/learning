@@ -8,7 +8,6 @@ import (
 func StringToArray(str string) []string {
 	v := strings.Split(str, " ")
 	return v
-
 }
 func main() {
 	log.Println(StringToArray("Robin Singh"))                        //[]string{"Robin", "Singh"}
