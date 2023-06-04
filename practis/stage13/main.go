@@ -19,25 +19,25 @@ type LogItem struct {
 // getUniqUrls написать функциию которая вернет уникальные url's из лога,
 // Нужно получить чистый URL без "GET" && "HTTP/2.0"
 func getUniqUrls(arr []LogItem) []string {
-	mapIp := map[string]struct{}{}
+	mapUrl := map[string]struct{}{}
 	for i := range arr {
-		mapIp[arr[i].url] = struct{}{}
+		mapUrl[arr[i].url] = struct{}{}
 	}
-	ips := []string{}
-	row := []string{}
-	for k := range mapIp {
-		ips = append(ips, k)
+	urls := []string{}
+	uniqUrl := []string{}
+	for k := range mapUrl {
+		urls = append(urls, k)
 
 	}
-	for i := 0; i < len(ips); i++ {
-		v := strings.Split(ips[i], " ")
+	for i := 0; i < len(urls); i++ {
+		v := strings.Split(urls[i], " ")
 		if len(v) != 3 {
 			fmt.Println("Defect url")
 			continue
 		}
-		row = append(row, v[1])
+		uniqUrl = append(uniqUrl, v[1])
 	}
-	return row
+	return uniqUrl
 }
 
 func main() {
