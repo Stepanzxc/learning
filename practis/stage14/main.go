@@ -18,7 +18,7 @@ type LogItem struct {
 }
 
 // getMaxTimeURL найти максимальное URL по времени выполнения
-func getMaxTimeURL(arr []LogItem) []any {
+func getMaxTimeURL(arr []LogItem) (string, float64) {
 	mapTimeUrl := map[string]float64{}
 	addArr := []string{}
 	for i := range arr {
@@ -37,10 +37,7 @@ func getMaxTimeURL(arr []LogItem) []any {
 			url = key
 		}
 	}
-	urlTime := []any{}
-	urlTime = append(urlTime, url)
-	urlTime = append(urlTime, maxFloat)
-	return urlTime
+	return url, maxFloat
 }
 func getFloatResponseTime(arr []string) []float64 {
 	time := arr
@@ -89,7 +86,8 @@ func main() {
 		os.Exit(1)
 	}
 	fmt.Println("Avg = ", getAvgTimeURL(items))
-	fmt.Println("Url/MaxTime = ", getMaxTimeURL(items))
+	url, maxTime := (getMaxTimeURL(items))
+	fmt.Println("Url/MaxTime = ", url, maxTime)
 
 }
 func getLogItems(filiename string) ([]LogItem, error) {
