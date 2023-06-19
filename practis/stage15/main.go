@@ -18,19 +18,12 @@ func getJson(str string) map[string]interface{} {
 		log.Fatalln(err)
 	}
 	var result map[string]interface{}
-	var Lastresult map[string]interface{}
 	json.NewDecoder(url.Body).Decode(&result)
-	Lastresult = result
-	for key, _ := range result {
-		if key == "error" {
-			for key, value := range result {
-				if key == "reason" {
-					fmt.Println("Error: ", value)
-					Lastresult = nil
-					break
-				}
-			}
-		}
+	if url.StatusCode < 200 || url.StatusCode >= 300 {
+		fmt.Println("status code: ", url.StatusCode)
+		fmt.Println("Reason error: ", http.StatusText(url.StatusCode))
+		result = nil
 	}
-	return Lastresult
+
+	return result
 }
