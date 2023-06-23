@@ -18,36 +18,38 @@ type StructForProd struct {
 	Brand       string `json:"brand"`
 	Category    string `json:"category"`
 }
+
 type StructUrl struct {
 	Products []StructForProd `json:"products"`
 }
 
-func Create() (*os.File, error) {
-	f, err := os.Create("products.csv")
-
-	if err != nil {
-
-		return nil, err
-	}
-	return f, nil
+func sayhello(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Приqwe!")
 }
 func main() {
-	f, err := Create()
+	http.HandleFunc("/", sayhello)           // Устанавливаем роутер
+	err := http.ListenAndServe(":8081", nil) // устанавливаем порт веб-сервера
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatal("ListenAndServe: ", err)
 	}
+
 	info, err := getInfUrl("https://dummyjson.com/products")
 	if err != nil {
 		//Только в этом случае нужно выходить из прогрраммы
 		log.Fatalln(err)
 	}
-	errs := Write(info, f)
+	errs := WriteInFileCsv(info)
 	if errs != nil {
 		log.Fatalln(errs)
 	}
-	defer f.Close()
 }
-func Write(prod StructUrl, f *os.File) error {
+func WriteInFileCsv(prod StructUrl) error {
+	f, err := os.Create("products.csv")
+	if err != nil {
+
+		return err
+	}
+
 	result := [][]string{
 		{"Id", "Title", "Description", "Price", "Brand", "Category"},
 	}
@@ -57,7 +59,8 @@ func Write(prod StructUrl, f *os.File) error {
 
 	}
 	w := csv.NewWriter(f)
-	err := w.WriteAll(result)
+	err = w.WriteAll(result)
+	defer f.Close()
 	return err
 }
 func getInfUrl(str string) (StructUrl, error) {
