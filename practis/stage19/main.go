@@ -73,7 +73,7 @@ type User struct {
 }
 
 func getInfUrl(str string) (User, error) {
-	var result User
+
 	response, err := http.Get(str)
 	if err != nil {
 		return User{}, err //Если ввозникла ошибка, то возвращаем пустубю структуру и ошибку
@@ -83,6 +83,7 @@ func getInfUrl(str string) (User, error) {
 		//Создаеим кастомную ошибку
 		return User{}, fmt.Errorf("status code from service %d", response.StatusCode)
 	}
+	var result User
 	//Делаем JSON Decode
 	if err := json.NewDecoder(response.Body).Decode(&result); err != nil {
 		//Если не валидный JSON то воврввщаем ошибку
@@ -97,12 +98,12 @@ func main() {
 		//Только в этом случае нужно выходить из прогрраммы
 		log.Fatalln(err)
 	}
-	errs := WriteInFileCsv(info)
-	if errs != nil {
-		log.Fatalln(errs)
+	err = WriteInFileCsv(info)
+	if err != nil {
+		log.Fatalln(err)
 	}
 }
-func WriteInFileCsv(prod User) error {
+func WriteInFileCsv(user User) error {
 	f, err := os.Create("someFromUser.csv")
 	if err != nil {
 		log.Println(err)
@@ -111,7 +112,7 @@ func WriteInFileCsv(prod User) error {
 	result := [][]string{
 		{"firstName", "age", "email", "phone", "lat", "lng"},
 	}
-	v := []string{(prod.FirstName), strconv.Itoa(prod.Age), prod.Email, prod.Phone, fmt.Sprint(prod.Address.Coordinates.Lat), fmt.Sprint(prod.Address.Coordinates.Lng)}
+	v := []string{(user.FirstName), strconv.Itoa(user.Age), user.Email, user.Phone, fmt.Sprint(user.Address.Coordinates.Lat), fmt.Sprint(user.Address.Coordinates.Lng)}
 	result = append(result, v)
 
 	w := csv.NewWriter(f)
