@@ -98,12 +98,12 @@ func main() {
 		//Только в этом случае нужно выходить из прогрраммы
 		log.Fatalln(err)
 	}
-	errs := WriteInFileCsv(info)
-	if errs != nil {
-		log.Fatalln(errs)
+	err = WriteInFileCsv(info)
+	if err != nil {
+		log.Fatalln(err)
 	}
 }
-func WriteInFileCsv(prod User) error {
+func WriteInFileCsv(user User) error {
 	f, err := os.Create("someFromUser.csv")
 	if err != nil {
 		log.Println(err)
@@ -112,7 +112,7 @@ func WriteInFileCsv(prod User) error {
 	result := [][]string{
 		{"firstName", "age", "email", "phone", "lat", "lng"},
 	}
-	v := []string{(prod.FirstName), strconv.Itoa(prod.Age), prod.Email, prod.Phone, fmt.Sprint(prod.Address.Coordinates.Lat), fmt.Sprint(prod.Address.Coordinates.Lng)}
+	v := []string{(user.FirstName), strconv.Itoa(user.Age), user.Email, user.Phone, fmt.Sprint(user.Address.Coordinates.Lat), fmt.Sprint(user.Address.Coordinates.Lng)}
 	result = append(result, v)
 
 	w := csv.NewWriter(f)
