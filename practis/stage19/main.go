@@ -73,7 +73,7 @@ type User struct {
 }
 
 func getInfUrl(str string) (User, error) {
-	var result User
+
 	response, err := http.Get(str)
 	if err != nil {
 		return User{}, err //Если ввозникла ошибка, то возвращаем пустубю структуру и ошибку
@@ -83,6 +83,7 @@ func getInfUrl(str string) (User, error) {
 		//Создаеим кастомную ошибку
 		return User{}, fmt.Errorf("status code from service %d", response.StatusCode)
 	}
+	var result User
 	//Делаем JSON Decode
 	if err := json.NewDecoder(response.Body).Decode(&result); err != nil {
 		//Если не валидный JSON то воврввщаем ошибку
